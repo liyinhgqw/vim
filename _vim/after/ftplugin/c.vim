@@ -1,3 +1,6 @@
+" Setting
+set sw=2
+
 " OmniCppComplete initialization
 call omni#cpp#complete#Init()
 
