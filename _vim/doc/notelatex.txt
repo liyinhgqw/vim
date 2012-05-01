@@ -1,0 +1,23 @@
+\ref{fig: ^n
+^J
+Env:
+   <F5>
+   EFI, EEQ
+   ,ce: center
+Cmd:
+   <F7>
+   `sf: textsf
+FONT:
+   FEM: \emph
+Sec:
+   SSE: section, SSS: subsection
+GREEK:
+   `a: \alpha
+   'A
+Auc:
+   `^: \Hat, `8: \infty, `>: \ge, `{: \Left{
+BIB:
+  BBB, BBX, BBL, BBH
+Complete:
+  <F9>, ^n
+
