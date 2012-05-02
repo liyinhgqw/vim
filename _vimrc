@@ -535,7 +535,7 @@ au FileType java setl shiftwidth=4
 au FileType java setl tabstop=4
 set smarttab
 set lbr
-set tw=500
+set tw=80
 
    """"""""""""""""""""""""""""""
    " Indent
