@@ -1,0 +1,28 @@
+[user]
+	name = liyinn
+[alias]  
+            ci = commit  
+            up = update  
+            st = status  
+            br = branch  
+            co = checkout  
+            di = diff  
+            lg = log --graph --decorate  
+            gl = log -p  
+            glp = log --graph --oneline --abbrev-commit --decorate  
+            rl = reflog  
+            llog = log --date=local  
+            ol = log --oneline  
+            w = whatchanged  
+            sta = stash  
+            rb = !post-review --parent=trunk --guess-description --username=liyin -o  
+            rb-diff = !post-review -n --parent=trunk  
+            sdiff = !git-svn-diff  
+[log]  
+            date = local  
+[color]  
+            ui = auto  
+[color "diff"]  
+            whitespace = red reverse  
+[core]  
+            whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol  
