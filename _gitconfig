@@ -3,7 +3,7 @@
 [alias]  
             ci = commit  
             up = update  
-            st = status  
+            st = status -s -b 
             br = branch  
             co = checkout  
             di = diff  
