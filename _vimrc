@@ -1043,6 +1043,11 @@ nmap <c-t> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 nmap <c-m> :Gtags -s <C-R>=expand("<cword>")<CR><CR>
 nmap <c-u> :ccl <CR>
 nmap <c-o> :Gtags -f %
+function! UpdateGtags(f)
+  let dir = fnamemodify(a:f, ':p:h')
+  exe 'silent !cd ' . dir . ' && global -u &> /dev/null &'
+endfunction
+au BufWritePost *.[ch] call UpdateGtags(expand('<afile>'))
 
 let g:clang_complete_copen=1
 let g:clang_periodic_quickfix=1
