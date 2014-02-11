@@ -8,6 +8,14 @@
 " Last Change: Mon Oct 25 16:04:31 CST 2010
 " Homepage:    http://easwy.com/
 " Version:     0.2
+" 
+" Useful Tools:
+" gtags
+" clang
+" ycm
+" snippetMate
+" c.vim
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,38 +44,38 @@ set history=400
 " Chinese
 " multi-encoding setting
 if has("multi_byte")
-  "set bomb 
-  set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,sjis,euc-kr,ucs-2le,latin1 
-  " CJK environment detection and corresponding setting 
-  if v:lang =~ "^zh_CN" 
-    " Use cp936 to support GBK, euc-cn == gb2312 
-    set encoding=chinese 
-    set termencoding=chinese 
-    set fileencoding=chinese 
-  elseif v:lang =~ "^zh_TW" 
-    " cp950, big5 or euc-tw 
-    " Are they equal to each other? 
-    set encoding=taiwan 
-    set termencoding=taiwan 
-    set fileencoding=taiwan 
-  "elseif v:lang =~ "^ko" 
-  "  " Copied from someone's dotfile, untested 
-  "  set encoding=euc-kr 
-  "  set termencoding=euc-kr 
-  "  set fileencoding=euc-kr 
-  "elseif v:lang =~ "^ja_JP" 
-  "  " Copied from someone's dotfile, untested 
-  "  set encoding=euc-jp 
-  "  set termencoding=euc-jp 
-  "  set fileencoding=euc-jp 
-  endif 
-  " Detect UTF-8 locale, and replace CJK setting if needed 
-  if v:lang =~ "utf8$" || v:lang =~ "UTF-8$" 
-    set encoding=utf-8 
-    set termencoding=utf-8 
-    set fileencoding=utf-8 
-  endif 
-endif 
+  "set bomb
+  set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,sjis,euc-kr,ucs-2le,latin1
+  " CJK environment detection and corresponding setting
+  if v:lang =~ "^zh_CN"
+    " Use cp936 to support GBK, euc-cn == gb2312
+    set encoding=chinese
+    set termencoding=chinese
+    set fileencoding=chinese
+  elseif v:lang =~ "^zh_TW"
+    " cp950, big5 or euc-tw
+    " Are they equal to each other?
+    set encoding=taiwan
+    set termencoding=taiwan
+    set fileencoding=taiwan
+  "elseif v:lang =~ "^ko"
+  "  " Copied from someone's dotfile, untested
+  "  set encoding=euc-kr
+  "  set termencoding=euc-kr
+  "  set fileencoding=euc-kr
+  "elseif v:lang =~ "^ja_JP"
+  "  " Copied from someone's dotfile, untested
+  "  set encoding=euc-jp
+  "  set termencoding=euc-jp
+  "  set fileencoding=euc-jp
+  endif
+  " Detect UTF-8 locale, and replace CJK setting if needed
+  if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+    set encoding=utf-8
+    set termencoding=utf-8
+    set fileencoding=utf-8
+  endif
+endif
 "if MySys() == "windows"
    "set encoding=utf-8
    "set langmenu=zh_CN.UTF-8
@@ -223,10 +231,13 @@ if !exists("g:vimrc_loaded")
 endif " exists(...)
 
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
+
+map <leader>0 :set syntax=no<cr>
 map <leader>1 :set syntax=c<cr>
 map <leader>2 :set syntax=xhtml<cr>
 map <leader>3 :set syntax=python<cr>
 map <leader>4 :set ft=javascript<cr>
+map <leader>5 :set syntax=vim<cr>
 map <leader>$ :syntax sync fromstart<cr>
 
 autocmd BufEnter * :syntax sync fromstart
@@ -380,12 +391,12 @@ map <leader>bd :Bclose<cr>
 "map <left> :bp<cr>
 
 "Tab configuration
-map <leader>tn :tabnew
-map <leader>te :tabedit
+map <leader>to :tabnew 
+map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>tj :tabp<cr>
-map <leader>tk :tabn<cr>
+map <leader>tm :tabmove 
+map <leader>tp :tabp<cr>
+map <leader>tn :tabn<cr>
 
 try
   set switchbuf=useopen
@@ -394,8 +405,8 @@ catch
 endtry
 
 "Moving fast to front, back and 2 sides ;)
-imap <m-$> <esc>$a
-imap <m-0> <esc>0i
+imap <C-e> <esc>$a
+imap <C-a> <esc>0i
 
 "Switch to current dir
 map <silent> <leader>cd :cd %:p:h<cr>
@@ -657,7 +668,7 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
    "Hide the help thing..
    let g:explDetailedHelp=0
-   
+
    nmap <silent> <leader>fe :Sexplore!<cr>
 
    """"""""""""""""""""""""""""""
@@ -772,8 +783,8 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
    " FeralToggleCommentify setting
    """"""""""""""""""""""""""""""
    let loaded_feraltogglecommentify = 1
-   "map <silent> <leader>tc :call ToggleCommentify()<CR>j 
-   "imap <M-c> <ESC>:call ToggleCommentify()<CR>j 
+   "map <silent> <leader>tc :call ToggleCommentify()<CR>j
+   "imap <M-c> <ESC>:call ToggleCommentify()<CR>j
 
    """"""""""""""""""""""""""""""
    " vimgdb setting
@@ -864,7 +875,7 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
    vmap <silent> <leader>lv :lv /<c-r>=<sid>GetVisualSelection()<cr>/ %<cr>:lw<cr>
 
    " Fast diff
-   "cmap @vd vertical diffsplit 
+   "cmap @vd vertical diffsplit
    set diffopt+=vertical
 
    "Remove the Windows ^M
@@ -912,13 +923,13 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 let g:vimrc_loaded = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" AuthorInfo 
+" AuthorInfo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimrc_author='liyin' 
-let g:vimrc_email='liyinhgqw@gmail.com' 
+let g:vimrc_author='liyin'
+let g:vimrc_email='liyinhgqw@gmail.com'
 let g:vimrc_homepage=''
 
-nmap <F4> :AuthorInfoDetect<cr> 
+nmap <F4> :AuthorInfoDetect<cr>
 
 nmap <leader>dc :Dox<cr>
 
@@ -936,28 +947,110 @@ nmap <leader>dc :Dox<cr>
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
     filetype plugin on
-    
+
     " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
     " can be called correctly.
     set shellslash
-    
+
     " IMPORTANT: grep will sometimes skip displaying the file name if you
     " search in a singe file. This will confuse Latex-Suite. Set your grep
     " program to always generate a file-name.
     set grepprg=grep\ -nH\ $*
-    
+
     " OPTIONAL: This enables automatic indentation as you type.
     filetype indent on
-    
+
     " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
     " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
     " The following changes the default filetype back to 'tex':
     let g:tex_flavor='latex'
-    
+
+  
+
+map <silent> <leader>vs :vert split 
+map <silent> <leader>hs :split 
 
 
+"""""""""""""""""""""""
+" Vundle
+"""""""""""""""""""""""
+set nocompatible              " be iMproved
+filetype off                  " required!
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
+" let Vundle manage Vundle
+" " required!
+" Bundle 'gmarik/vundle'
+"
+"" My bundles here:
+"
+"" original repos on GitHub
+Bundle 'gtags.vim'
+Bundle 'c.vim'
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sukima/xmledit'
+Bundle 'sjl/gundo.vim'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'klen/python-mode'
+Bundle 'Valloric/ListToggle'
+Bundle 'SirVer/ultisnips'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 't9md/vim-quickhl'
+" Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'YankRing.vim'
+Bundle 'vcscommand.vim'
+Bundle 'ShowPairs'
+Bundle 'SudoEdit.vim'
+Bundle 'EasyGrep'
+Bundle 'VOoM'
+Bundle 'VimIM'
+"..................................
+"" non github repos
+" Bundle 'git://git.wincent.com/command-t.git'
+" "......................................
 
+filetype plugin indent on     " required!
 
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install (update) bundles
+" :BundleSearch(!) foo - search (or refresh cache first) for foo
+" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle commands are not allowed.
+"
+"
+"
 
+" Gtags configuration
+" :Gtags funcname 定位到 funcname 的定义处。
+" :Gtags -r funcname 查询 funcname被引用的地方。
+" :Gtags -s symbol 定位 symbol 出现的地方。
+" :Gtags -g string Goto string 出现的地方。 :Gtags -gi string 忽略大小写。
+" :Gtags -f filename 显示 filename 中的函数列表。 你可以用 :Gtags -f %
+" 显示当前文件。
+" :Gtags -P pattern 显示路径中包含特定模式的文件。 如 :Gtags -P .h$
+" 显示所有头文件， :Gtags -P /vm/ 显示vm目录下的文件。
+" 
+nmap <c-i> :Gtags <C-R>=expand("<cword>")<CR><CR>
+nmap <c-I> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+nmap <c-m> :Gtags -s <C-R>=expand("<cword>")<CR><CR>
+nmap <c-u> :ccl <CR>
+nmap <c-o> :Gtags -f %
+
+let g:clang_complete_copen=1
+let g:clang_periodic_quickfix=1
+let g:clang_snippets=1
+let g:clang_close_preview=1
+let g:clang_use_library=1
+let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
