@@ -855,7 +855,7 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 " MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
    "Quickfix
-   nmap <leader>cn :cn<cr>
+   nmap <leader>co :cn<cr>
    nmap <leader>cp :cp<cr>
    nmap <leader>cw :cw 10<cr>
    "nmap <leader>cc :botright lw 10<cr>
@@ -1039,7 +1039,7 @@ filetype plugin indent on     " required!
 " 显示所有头文件， :Gtags -P /vm/ 显示vm目录下的文件。
 " 
 nmap <c-i> :Gtags <C-R>=expand("<cword>")<CR><CR>
-nmap <c-I> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+nmap <c-t> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 nmap <c-m> :Gtags -s <C-R>=expand("<cword>")<CR><CR>
 nmap <c-u> :ccl <CR>
 nmap <c-o> :Gtags -f %
